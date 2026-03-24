@@ -1,29 +1,70 @@
-random.nextInt(max - min + 1) + min
-  RandomGenerator generator = new RandomGenerator();
-int number = generator.generateNumber(min, max);
-System.out.println("Generated number: " + number);
 import java.util.Random;
 
-public class RandomGenerator {
-
+public class GameLogic {
+    private int secretNumber;
+    private int attempts;
+    private int maxAttempts;
+    private boolean guessedCorrectly;
     private Random random;
 
-    public RandomGenerator() {
+    public GameLogic() {
         random = new Random();
+        maxAttempts = 5; // player gets 5 chances
+        startNewGame();
     }
 
-    public int generateNumber(int min, int max) {
-        return random.nextInt(max - min + 1) + min;
+    // Starts or resets the game
+    public void startNewGame() {
+        secretNumber = random.nextInt(100) + 1; // random number between 1 and 100
+        attempts = 0;
+        guessedCorrectly = false;
+    }
+
+    // Processes the player's guess
+    public String checkGuess(int guess) {
+        attempts++;
+
+        if (guess == secretNumber) {
+            guessedCorrectly = true;
+            return "Correct! You guessed the number.";
+        } else if (guess < secretNumber) {
+            return "Too low!";
+        } else {
+            return "Too high!";
+        }
+    }
+
+    // Checks if the game is over
+    public boolean isGameOver() {
+        return guessedCorrectly || attempts >= maxAttempts;
+    }
+
+    // Checks if the player won
+    public boolean hasWon() {
+        return guessedCorrectly;
+    }
+
+    // Returns attempts used
+    public int getAttempts() {
+        return attempts;
+    }
+
+    // Returns remaining attempts
+    public int getRemainingAttempts() {
+        return maxAttempts - attempts;
+    }
+
+    // Returns the correct answer after losing
+    public int getSecretNumber() {
+        return secretNumber;
+    }
+
+    // Scoring system
+    public int calculateScore() {
+        if (guessedCorrectly) {
+            return (maxAttempts - attempts + 1) * 20;
+        } else {
+            return 0;
+        }
     }
 }
-
-git checkout -b feature/random-logic
-  git commit -m "feat: create RandomGenerator class"
-git commit -m "feat: import Random library"
-git commit -m "feat: add generateNumber method"
-git commit -m "feat: implement inclusive range logic"
-git commit -m "fix: correct random number formula"
-git commit -m "test: test generation with small range"
-git commit -m "test: test generation with larger range"
-git commit -m "refactor: clean up random generation code"
-git commit -m "docs: add comments to core logic"
