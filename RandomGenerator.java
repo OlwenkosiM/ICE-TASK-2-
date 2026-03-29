@@ -9,7 +9,7 @@ public class GameLogic {
 
     public GameLogic() {
         random = new Random();
-        maxAttempts = 5; // player gets 5 chances
+        maxAttempts = 6; // player gets 5 chances
         startNewGame();
     }
 
