@@ -10,7 +10,7 @@ public class GameLogic {
     public GameLogic() {
         random = new Random();
         maxAttempts = 6; // player gets 6 chances
-        startNewGame();
+        StartNewGame();
     }
 
     // Starts or resets the game
