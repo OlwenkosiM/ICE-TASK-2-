@@ -26,7 +26,7 @@ public class GameLogic {
 
         if (guess == secretNumber) {
             guessedCorrectly = true;
-            return "Correct! You guessed the number.";
+            return "Correct! You have guessed the number.";
         } else if (guess < secretNumber) {
             return "Lower!";
         } else {
