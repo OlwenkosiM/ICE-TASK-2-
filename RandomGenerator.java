@@ -62,7 +62,7 @@ public class GameLogic {
     // Scoring system
     public int calculateScore() {
         if (guessedCorrectly) {
-            return (maxAttempts - attempts + 1) * 20;
+            return (maxAttempts - attempts + 1) * 25;
         } else {
             return 0;
         }
