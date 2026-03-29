@@ -15,7 +15,7 @@ public class GameLogic {
 
     // Starts or resets the game
     public void startNewGame() {
-        secretNumber = random.nextInt(100) + 1; // random number between 1 and 100
+        secretNumber = random.nextInt(200) + 1; // random number between 1 and 100
         attempts = 0;
         guessedCorrectly = false;
     }
