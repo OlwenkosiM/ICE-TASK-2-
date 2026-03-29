@@ -30,7 +30,7 @@ public class GameLogic {
         } else if (guess < secretNumber) {
             return "Lower!";
         } else {
-            return "Too high!";
+            return "Higher!";
         }
     }
 
